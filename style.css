@@ -11,3 +11,7 @@
     width: 30px;
     background-color: honeydew;
 }
+
+.active {
+    background-color: red;
+}
