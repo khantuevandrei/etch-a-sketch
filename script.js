@@ -1,17 +1,52 @@
 const container = document.querySelector('#container');
+let oneSide = 16;
 
-for (let i = 1; i <= 16; i++) {
-    for (let i = 1; i <= 16; i++) {
-        const square = document.createElement('div');
-        square.setAttribute('class', 'square');
-        container.appendChild(square);
-    }
+const paraBtn = document.createElement('button');
+paraBtn.textContent = 'Enter new parameters';
+paraBtn.addEventListener('click', () => {
+    makeNewGrid();
+})
+const body = document.querySelector('body');
+body.appendChild(paraBtn);
+
+function clearTheGrid() {
+    container.innerHTML = '';
 }
 
-const squares = document.querySelectorAll('.square');
+function setNewParameters() {
+    oneSide = Number(prompt('Squares per side?', ''));
+    if (oneSide > 100) oneSide = 100;
+    return oneSide;
+}
 
-squares.forEach(square => {
-    square.addEventListener('mouseover', () => {
-        square.classList.add('active');
+function drawGrid() {
+    let length = 960 / oneSide;
+
+    for (let i = 1; i <= oneSide; i++) {
+        for (let i = 1; i <= oneSide; i++) {
+            const square = document.createElement('div');
+            square.setAttribute('class', 'square');
+            square.setAttribute('style', `height: ${length}px; width: ${length}px;`)
+            container.appendChild(square);
+        }
+    }
+
+    const squares = document.querySelectorAll('.square');
+
+    squares.forEach(square => {
+        square.addEventListener('mouseover', () => {
+            square.classList.add('active');
+        })
     })
-})
+}
+
+function makeNewGrid() {
+    clearTheGrid();
+    setNewParameters();
+    drawGrid()
+}
+
+drawGrid();
+
+
+

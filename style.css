@@ -1,14 +1,12 @@
 #container {
-    width: 480px;
-    height: 480px;
+    width: 960px;
+    height: 960px;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
 }
 
 .square {
-    height: 30px;
-    width: 30px;
     background-color: honeydew;
 }
 
