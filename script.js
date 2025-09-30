@@ -9,6 +9,13 @@ paraBtn.addEventListener('click', () => {
 const body = document.querySelector('body');
 body.appendChild(paraBtn);
 
+function getRandomColor() {
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
 function clearTheGrid() {
     container.innerHTML = '';
 }
@@ -35,7 +42,7 @@ function drawGrid() {
 
     squares.forEach(square => {
         square.addEventListener('mouseover', () => {
-            square.classList.add('active');
+            square.style.backgroundColor = `${getRandomColor()}`;
         })
     })
 }
@@ -47,11 +54,3 @@ function makeNewGrid() {
 }
 
 drawGrid();
-
-function getRandomColor() {
-    let red = Math.floor(Math.random() * 255);
-    let green = Math.floor(Math.random() * 255);
-    let blue = Math.floor(Math.random() * 255);
-    return `rgb(${red}, ${green}, ${blue})`;
-}
-
